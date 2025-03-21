@@ -1,0 +1,83 @@
+EMPLOYMENT AGREEMENT
+
+This Employment Agreement (the "Agreement") is made and entered into as of March 15, 2025 (the "Effective Date"), by and between:
+
+Tech Innovations Inc., a Delaware corporation with its principal place of business at 987 Innovation Parkway, Austin, TX 78701 (the "Company")
+
+and
+
+Jane Doe, residing at 654 Talent Lane, Austin, TX 78703 (the "Employee").
+
+The parties agree as follows:
+
+1. EMPLOYMENT
+
+1.1 Position and Duties. The Company hereby employs Employee, and Employee hereby accepts employment with the Company, as Chief Technology Officer (CTO). Employee shall perform all duties and responsibilities inherent in the position of Chief Technology Officer, including those specified in the job description attached as Exhibit A, as well as any other duties reasonably assigned by the Company's CEO and Board of Directors.
+
+1.2 Full Time and Attention. Employee shall devote Employee's full business time, attention, and energies to the performance of Employee's duties for the Company.
+
+2. TERM
+
+2.1 Commencement. Employee's employment under this Agreement shall commence on April 1, 2025 (the "Start Date").
+
+2.2 At-Will Employment. Employee's employment with the Company is "at-will," meaning that either the Company or Employee may terminate this Agreement and the employment relationship at any time, with or without cause, subject to the provisions of Section 5 below.
+
+3. COMPENSATION AND BENEFITS
+
+3.1 Base Salary. The Company shall pay Employee a base salary of $225,000 per year (the "Base Salary"), payable in equal installments in accordance with the Company's regular payroll practices, less applicable withholdings and deductions.
+
+3.2 Annual Bonus. Employee shall be eligible to receive an annual performance bonus of up to 30% of Employee's Base Salary (the "Annual Bonus"), based on achievement of individual and Company performance goals established by the Board of Directors. The Annual Bonus, if any, shall be paid within 90 days following the end of the Company's fiscal year.
+
+3.3 Equity. Subject to approval by the Company's Board of Directors, Employee shall be granted an option to purchase 100,000 shares of the Company's common stock (the "Option") under the Company's Stock Option Plan (the "Plan"). The Option shall vest over four (4) years, with 25% vesting after one year of continuous service from the Start Date, and the remainder vesting in equal monthly installments over the following 36 months of continuous service.
+
+3.4 Benefits. Employee shall be eligible to participate in all employee benefit plans, programs, and arrangements that the Company makes available to its similarly situated employees generally, subject to the terms and conditions of such plans, programs, and arrangements.
+
+3.5 Vacation. Employee shall be entitled to four (4) weeks of paid vacation per year, accrued in accordance with the Company's vacation policy.
+
+3.6 Business Expenses. The Company shall reimburse Employee for all reasonable business expenses incurred in the performance of Employee's duties, in accordance with the Company's expense reimbursement policies.
+
+4. PROPRIETARY INFORMATION AND INVENTIONS
+
+4.1 Proprietary Information Agreement. As a condition of employment, Employee shall sign and comply with the Company's standard Employee Proprietary Information and Inventions Agreement (the "PIIA"), which is attached as Exhibit B and incorporated herein by reference.
+
+5. TERMINATION
+
+5.1 Termination without Cause. If the Company terminates Employee's employment without Cause (as defined below), the Company shall provide Employee with:
+
+(a) Accrued Obligations, including any earned but unpaid Base Salary, unused vacation, and reimbursable expenses; and
+
+(b) Severance Pay equal to six (6) months of Employee's Base Salary, payable in accordance with the Company's regular payroll schedule, subject to Employee's execution of a separation agreement containing a general release of claims in a form acceptable to the Company.
+
+5.2 Termination for Cause. If the Company terminates Employee's employment for Cause, the Company shall provide Employee with only the Accrued Obligations. "Cause" means:
+
+(a) Employee's material breach of this Agreement or the PIIA;
+(b) Employee's commission of a felony or any crime involving moral turpitude;
+(c) Employee's gross negligence or willful misconduct in the performance of duties;
+(d) Employee's failure to perform the essential functions of Employee's position; or
+(e) Employee's violation of any material Company policy.
+
+5.3 Resignation. If Employee resigns, the Company shall provide Employee with only the Accrued Obligations.
+
+6. RESTRICTIVE COVENANTS
+
+6.1 Non-Competition. During employment and for twelve (12) months thereafter, Employee shall not, directly or indirectly, engage in any business that competes with the Company's business.
+
+6.2 Non-Solicitation. During employment and for twelve (12) months thereafter, Employee shall not, directly or indirectly, solicit or attempt to solicit any employee, consultant, or customer of the Company.
+
+7. GENERAL PROVISIONS
+
+7.1 Governing Law. This Agreement shall be governed by and construed in accordance with the laws of the State of Texas, without giving effect to any choice of law or conflict of law provisions.
+
+7.2 Dispute Resolution. Any dispute arising out of or relating to this Agreement shall be resolved by confidential arbitration conducted in Austin, Texas in accordance with the rules of the American Arbitration Association.
+
+7.3 Entire Agreement. This Agreement, together with the PIIA and any other exhibits referenced herein, constitutes the entire agreement between the parties relating to this subject matter and supersedes all prior or contemporaneous agreements and understandings, whether written or oral.
+
+7.4 Amendment. This Agreement may be amended or modified only by a written instrument signed by Employee and by a duly authorized representative of the Company.
+
+IN WITNESS WHEREOF, the parties hereto have executed this Agreement as of the Effective Date.
+
+Tech Innovations Inc.                     Employee
+By: _____________________                 _____________________
+Name: Robert Wilson                       Jane Doe
+Title: CEO                                
+Date: March 15, 2025                      Date: March 15, 2025

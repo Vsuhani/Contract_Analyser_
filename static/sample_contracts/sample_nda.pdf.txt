@@ -1,0 +1,97 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement (the "Agreement") is entered into as of April 10, 2025 (the "Effective Date") by and between:
+
+Innovative Research Labs, a corporation organized under the laws of Massachusetts, with its principal place of business at 555 Science Park Drive, Cambridge, MA 02142 ("IRL")
+
+and
+
+Global Pharmaceuticals Inc., a corporation organized under the laws of New Jersey, with its principal place of business at 789 Medical Plaza, Princeton, NJ 08540 ("GPI").
+
+Each of IRL and GPI may be referred to individually as a "Party" and collectively as the "Parties."
+
+RECITALS
+
+WHEREAS, the Parties wish to explore a potential business relationship relating to the development of novel therapeutics (the "Purpose"); and
+
+WHEREAS, in connection with the Purpose, each Party may disclose to the other certain confidential and proprietary information, and the Parties wish to protect such information in accordance with this Agreement;
+
+NOW, THEREFORE, in consideration of the mutual covenants, terms, and conditions set forth herein, and for other good and valuable consideration, the receipt and sufficiency of which are hereby acknowledged, the Parties agree as follows:
+
+1. DEFINITION OF CONFIDENTIAL INFORMATION
+
+1.1 "Confidential Information" means all non-public, confidential, or proprietary information disclosed by a Party (the "Disclosing Party") to the other Party (the "Receiving Party"), in any form or medium, whether oral, written, electronic, or otherwise, and whether or not marked, designated, or otherwise identified as "confidential," including but not limited to:
+
+(a) all information concerning the Disclosing Party's past, present, and future business affairs, including finances, products, services, research, development, inventions, processes, specifications, designs, drawings, technology, marketing, customers, and suppliers;
+
+(b) the Disclosing Party's technical know-how, trade secrets, formulas, compositions, techniques, algorithms, software programs, source code, data, and other proprietary rights; and
+
+(c) any third-party information that the Disclosing Party is obligated to keep confidential.
+
+1.2 Exclusions. Confidential Information does not include information that:
+
+(a) is or becomes generally available to the public other than through a breach of this Agreement by the Receiving Party;
+
+(b) was known to the Receiving Party prior to its disclosure by the Disclosing Party, as evidenced by written records;
+
+(c) becomes available to the Receiving Party on a non-confidential basis from a source other than the Disclosing Party, provided that such source is not bound by a confidentiality agreement with the Disclosing Party; or
+
+(d) is independently developed by the Receiving Party without use of or reference to the Disclosing Party's Confidential Information, as evidenced by written records.
+
+2. OBLIGATIONS OF RECEIVING PARTY
+
+2.1 Protection of Confidential Information. The Receiving Party shall:
+
+(a) keep the Disclosing Party's Confidential Information strictly confidential;
+
+(b) use the Disclosing Party's Confidential Information solely for the Purpose and not for any other purpose, including any competitive or commercial purpose;
+
+(c) not disclose the Disclosing Party's Confidential Information to any third party without the Disclosing Party's prior written consent;
+
+(d) limit access to the Disclosing Party's Confidential Information to its employees, agents, and representatives who (i) need to know such information for the Purpose, (ii) are informed of its confidential nature, and (iii) are bound by confidentiality obligations at least as restrictive as those contained in this Agreement; and
+
+(e) protect the Disclosing Party's Confidential Information with at least the same degree of care it uses to protect its own confidential information, but in no event less than reasonable care.
+
+2.2 Required Disclosures. If the Receiving Party is required by law, court order, or governmental authority to disclose any Confidential Information, the Receiving Party shall:
+
+(a) promptly notify the Disclosing Party in writing of such requirement;
+
+(b) cooperate with the Disclosing Party in seeking a protective order or other appropriate remedy; and
+
+(c) disclose only that portion of the Confidential Information that is legally required to be disclosed.
+
+3. TERM AND TERMINATION
+
+3.1 Term. This Agreement will remain in effect for three (3) years from the Effective Date, unless terminated earlier by mutual agreement of the Parties.
+
+3.2 Survival. Notwithstanding the termination of this Agreement, the confidentiality obligations set forth in this Agreement shall survive for a period of five (5) years from the date of disclosure of the Confidential Information.
+
+3.3 Return or Destruction. Upon the termination of this Agreement or at the Disclosing Party's request, the Receiving Party shall promptly return to the Disclosing Party or destroy all Confidential Information in its possession, including all copies, notes, or derivatives thereof, and certify in writing that it has done so.
+
+4. REMEDIES
+
+4.1 Equitable Relief. Each Party acknowledges that a breach of this Agreement may cause the other Party irreparable harm for which monetary damages would be inadequate. Accordingly, either Party may seek injunctive or other equitable relief to prevent or remedy a breach of this Agreement, without the necessity of posting a bond.
+
+4.2 Cumulative Remedies. The rights and remedies provided under this Agreement are cumulative and are in addition to, not in lieu of, any other rights and remedies available under law or in equity.
+
+5. GENERAL PROVISIONS
+
+5.1 No License. Nothing in this Agreement shall be construed as granting any right, license, or interest in or to any intellectual property rights of either Party.
+
+5.2 No Obligation. This Agreement does not obligate either Party to disclose any Confidential Information or to enter into any other agreement or business relationship.
+
+5.3 Governing Law. This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles.
+
+5.4 Entire Agreement. This Agreement constitutes the entire agreement between the Parties with respect to the subject matter hereof and supersedes all prior or contemporaneous understandings and agreements, whether written or oral.
+
+5.5 Amendments. This Agreement may only be amended, modified, or supplemented by an agreement in writing signed by each Party.
+
+5.6 Counterparts. This Agreement may be executed in counterparts, each of which shall be deemed an original, but all of which together shall be deemed to be one and the same agreement.
+
+IN WITNESS WHEREOF, the Parties hereto have executed this Agreement as of the Effective Date.
+
+Innovative Research Labs                 Global Pharmaceuticals Inc.
+By: _____________________                By: _____________________
+Name: Dr. Emily Chen                     Name: Dr. Mark Thompson
+Title: CEO                               Title: VP of Research
+Date: April 10, 2025                     Date: April 10, 2025

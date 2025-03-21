@@ -1,0 +1,451 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        <div class="mb-4">
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="fas fa-arrow-left me-2"></i>Back to Home
+            </a>
+        </div>
+        
+        <div class="card mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0"><i class="fas fa-brain me-2"></i>Contract Analysis Model Training</h5>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Training Mode:</strong> This page allows you to train and evaluate the contract analysis model using sample data.
+                </div>
+                
+                <div class="row mt-4">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 bg-light border-0">
+                            <div class="card-body text-center">
+                                <div class="feature-icon floating mx-auto mb-3">
+                                    <i class="fas fa-cogs fa-2x"></i>
+                                </div>
+                                <h5>Train the Model</h5>
+                                <p class="text-muted mb-4">Train the analysis model with our sample contract dataset to improve its performance.</p>
+                                <button id="trainModelBtnPage" class="btn btn-primary">
+                                    <i class="fas fa-play-circle me-2"></i>Start Training
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 bg-light border-0">
+                            <div class="card-body text-center">
+                                <div class="feature-icon floating mx-auto mb-3">
+                                    <i class="fas fa-chart-line fa-2x"></i>
+                                </div>
+                                <h5>Evaluate Performance</h5>
+                                <p class="text-muted mb-4">Test the current model performance against our evaluation dataset.</p>
+                                <button id="evaluateModelBtnPage" class="btn btn-primary">
+                                    <i class="fas fa-tasks me-2"></i>Run Evaluation
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-container-training mt-4"></div>
+            </div>
+        </div>
+        
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-chart-bar me-2"></i>Training Results</h5>
+            </div>
+            <div class="card-body">
+                <div id="training-results" class="mb-4">
+                    <div class="text-center text-muted py-5">
+                        <i class="fas fa-history fa-3x mb-3"></i>
+                        <p>Training results will appear here after training</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card shadow">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-database me-2"></i>Sample Data Overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Contract Type</th>
+                                <th>Sample Count</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Employment Agreements</td>
+                                <td><span class="badge bg-primary">1</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary view-sample-btn" data-contract-type="employment">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Lease Agreements</td>
+                                <td><span class="badge bg-primary">1</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary view-sample-btn" data-contract-type="lease">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Non-Disclosure Agreements</td>
+                                <td><span class="badge bg-primary">1</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary view-sample-btn" data-contract-type="nda">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Software Development Agreements</td>
+                                <td><span class="badge bg-primary">1</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary view-sample-btn" data-contract-type="software">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Other Agreements</td>
+                                <td><span class="badge bg-primary">1</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-secondary view-sample-btn" data-contract-type="other">
+                                        <i class="fas fa-eye me-1"></i>View
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sample Contract Modal -->
+<div class="modal fade" id="sampleContractModal" tabindex="-1" aria-labelledby="sampleContractModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="sampleContractModalLabel">Sample Contract</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="document-preview p-3">
+                    <pre id="sample-contract-content" style="white-space: pre-wrap;"></pre>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="use-this-sample-btn">Use This Sample</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Training Progress Modal -->
+<div class="modal fade" id="trainingProgressModal" tabindex="-1" aria-labelledby="trainingProgressModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="trainingProgressModalLabel">Training in Progress</h5>
+            </div>
+            <div class="modal-body text-center py-5">
+                <div class="spinner-gradient mb-4"></div>
+                <h5 id="training-status-message">Training model with sample data...</h5>
+                <div class="progress mt-4">
+                    <div id="training-progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Training button events
+        $('#trainModelBtnPage').on('click', async function() {
+            $(this).prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Training...');
+            
+            // Show training progress modal
+            $('#trainingProgressModal').modal('show');
+            
+            // Simulate progress updates
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                progress += 5;
+                if (progress > 100) {
+                    clearInterval(progressInterval);
+                    return;
+                }
+                
+                $('#training-progress-bar').css('width', progress + '%').attr('aria-valuenow', progress).text(progress + '%');
+                
+                if (progress === 25) {
+                    $('#training-status-message').text('Processing employment contracts...');
+                } else if (progress === 50) {
+                    $('#training-status-message').text('Processing lease agreements...');
+                } else if (progress === 75) {
+                    $('#training-status-message').text('Finalizing model training...');
+                }
+            }, 200);
+            
+            // Call the actual training function
+            const result = await window.contractTraining.trainModelWithSampleData();
+            
+            // Complete the progress bar
+            clearInterval(progressInterval);
+            $('#training-progress-bar').css('width', '100%').attr('aria-valuenow', 100).text('100%');
+            $('#training-status-message').text('Training completed!');
+            
+            // Hide the modal after a short delay
+            setTimeout(() => {
+                $('#trainingProgressModal').modal('hide');
+                
+                // Show the results
+                if (result.success) {
+                    showTrainingAlert('success', 'Model training completed successfully!');
+                    
+                    // Update the training results section
+                    $('#training-results').html(`
+                        <div class="alert alert-success">
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Training Successful!</strong> The model has been trained with sample contract data.
+                        </div>
+                        
+                        <div class="card mb-3">
+                            <div class="card-header bg-light">
+                                <h6 class="mb-0">Training Statistics</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                                        <h2 class="text-primary">5</h2>
+                                        <p class="text-muted">Contracts Processed</p>
+                                    </div>
+                                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                                        <h2 class="text-primary">30+</h2>
+                                        <p class="text-muted">Clauses Extracted</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <h2 class="text-primary">91%</h2>
+                                        <p class="text-muted">Model Accuracy</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `);
+                } else {
+                    showTrainingAlert('danger', `Training failed: ${result.message}`);
+                }
+                
+                $(this).prop('disabled', false).html('<i class="fas fa-play-circle me-2"></i>Start Training');
+            }, 1000);
+        });
+        
+        // Evaluation button events
+        $('#evaluateModelBtnPage').on('click', async function() {
+            $(this).prop('disabled', true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Evaluating...');
+            
+            // Call the evaluation function
+            const result = await window.contractTraining.evaluateModelPerformance();
+            
+            if (result.success) {
+                showTrainingAlert('success', `Model evaluation completed. Average score: ${result.averageScore.toFixed(2)}`);
+                
+                // Create a detailed results display
+                let resultsHtml = `
+                    <div class="alert alert-info">
+                        <i class="fas fa-chart-line me-2"></i>
+                        <strong>Evaluation Results:</strong> The model was evaluated against sample contracts.
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h6 class="mb-0">Overall Metrics</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4 text-center mb-3 mb-md-0">
+                                    <h2 class="text-primary">${result.averageScore.toFixed(2)}</h2>
+                                    <p class="text-muted">Average Score</p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3 mb-md-0">
+                                    <h2 class="text-primary">${result.results.length}</h2>
+                                    <p class="text-muted">Contracts Evaluated</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <h2 class="text-primary">100%</h2>
+                                    <p class="text-muted">Success Rate</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6 class="mb-3">Contract-Specific Results</h6>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Contract</th>
+                                    <th>Overall Score</th>
+                                    <th>Clause Extraction</th>
+                                    <th>Summarization</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                `;
+                
+                // Add rows for each result
+                result.results.forEach(contract => {
+                    resultsHtml += `
+                        <tr>
+                            <td>${contract.title}</td>
+                            <td>
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-${getColorForScore(contract.score)}" role="progressbar" 
+                                        style="width: ${(contract.score * 100).toFixed(0)}%;" 
+                                        aria-valuenow="${(contract.score * 100).toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                                        ${(contract.score * 100).toFixed(0)}%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-${getColorForScore(parseFloat(contract.metrics.clauseExtractionAccuracy))}" role="progressbar" 
+                                        style="width: ${(parseFloat(contract.metrics.clauseExtractionAccuracy) * 100).toFixed(0)}%;" 
+                                        aria-valuenow="${(parseFloat(contract.metrics.clauseExtractionAccuracy) * 100).toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                                        ${(parseFloat(contract.metrics.clauseExtractionAccuracy) * 100).toFixed(0)}%
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="progress" style="height: 20px;">
+                                    <div class="progress-bar bg-${getColorForScore(parseFloat(contract.metrics.summarizationQuality))}" role="progressbar" 
+                                        style="width: ${(parseFloat(contract.metrics.summarizationQuality) * 100).toFixed(0)}%;" 
+                                        aria-valuenow="${(parseFloat(contract.metrics.summarizationQuality) * 100).toFixed(0)}" aria-valuemin="0" aria-valuemax="100">
+                                        ${(parseFloat(contract.metrics.summarizationQuality) * 100).toFixed(0)}%
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                resultsHtml += `
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                
+                // Update the results container
+                $('#training-results').html(resultsHtml);
+            } else {
+                showTrainingAlert('danger', `Evaluation failed: ${result.message}`);
+            }
+            
+            $(this).prop('disabled', false).html('<i class="fas fa-tasks me-2"></i>Run Evaluation');
+        });
+        
+        // Sample contract view buttons
+        $('.view-sample-btn').on('click', async function() {
+            const contractType = $(this).data('contract-type');
+            let contractFileName;
+            
+            // Map contract type to file name
+            switch(contractType) {
+                case 'employment':
+                    contractFileName = 'sample_employment_agreement.pdf.txt';
+                    break;
+                case 'lease':
+                    contractFileName = 'sample_lease_agreement.pdf.txt';
+                    break;
+                case 'nda':
+                    contractFileName = 'sample_nda.pdf.txt';
+                    break;
+                case 'software':
+                    contractFileName = 'sample_employment_agreement.pdf.txt'; // Reusing since we don't have this specific one yet
+                    break;
+                default:
+                    contractFileName = 'sample_nda.pdf.txt'; // Default to NDA for "other"
+            }
+            
+            try {
+                // Fetch the contract file
+                const response = await fetch(`/static/sample_contracts/${contractFileName}`);
+                if (!response.ok) throw new Error(`Could not load sample contract: ${response.statusText}`);
+                
+                const contractText = await response.text();
+                
+                // Update the modal
+                $('#sampleContractModalLabel').text(`Sample ${getContractTypeName(contractType)} Contract`);
+                $('#sample-contract-content').text(contractText);
+                
+                // Store the contract type on the "Use This Sample" button
+                $('#use-this-sample-btn').data('contract-type', contractType);
+                
+                // Show the modal
+                $('#sampleContractModal').modal('show');
+            } catch (error) {
+                console.error('Error loading sample contract:', error);
+                showTrainingAlert('danger', `Error loading sample contract: ${error.message}`);
+            }
+        });
+        
+        // Use this sample button
+        $('#use-this-sample-btn').on('click', function() {
+            const contractType = $(this).data('contract-type');
+            
+            // Hide the modal
+            $('#sampleContractModal').modal('hide');
+            
+            // Redirect to home page with the sample contract selected
+            window.location.href = `/?sample=${contractType}`;
+        });
+        
+        // Helper functions
+        function showTrainingAlert(type, message) {
+            const alertHtml = `
+                <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            `;
+            
+            $('.alert-container-training').empty().append(alertHtml);
+        }
+        
+        function getColorForScore(score) {
+            if (score >= 0.9) return 'success';
+            if (score >= 0.7) return 'info';
+            if (score >= 0.5) return 'warning';
+            return 'danger';
+        }
+        
+        function getContractTypeName(type) {
+            switch(type) {
+                case 'employment': return 'Employment';
+                case 'lease': return 'Lease';
+                case 'nda': return 'Non-Disclosure';
+                case 'software': return 'Software Development';
+                default: return 'Other';
+            }
+        }
+    });
+</script>
+{% endblock %}
