@@ -5,18 +5,18 @@
     <div class="col-md-10 col-lg-8">
         <div class="card mb-4 shadow">
             <div class="card-body text-center p-5">
-                <h1 class="mb-4">Contract Analysis System</h1>
+                <h1 class="mb-4 typewriter">Contract Analysis System</h1>
                 <p class="lead mb-4">Upload your contract documents for AI-powered analysis, summarization, and key clause extraction.</p>
                 
                 <div class="text-center my-4">
-                    <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                    <i class="fas fa-file-alt fa-4x text-primary mb-3 floating"></i>
                 </div>
                 
                 <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="mb-3">
                     <div class="mb-4">
                         <div class="input-group">
                             <input type="file" class="form-control" name="file" id="file-upload" accept=".pdf,.docx" required>
-                            <button class="btn btn-primary" type="submit">
+                            <button class="btn btn-primary pulse" type="submit">
                                 <i class="fas fa-upload me-2"></i>Analyze
                             </button>
                         </div>
@@ -26,32 +26,86 @@
             </div>
         </div>
 
-        <div class="card shadow">
+        <div class="card shadow fade-in-up">
             <div class="card-header">
-                <h5 class="mb-0">Features</h5>
+                <h5 class="mb-0"><i class="fas fa-star me-2"></i>Features</h5>
             </div>
             <div class="card-body">
                 <div class="row">
-                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <div class="col-md-4 text-center mb-4 mb-md-0 stagger-item">
                         <div class="feature-icon mb-3">
-                            <i class="fas fa-file-alt fa-2x text-primary"></i>
+                            <i class="fas fa-file-alt fa-2x"></i>
                         </div>
                         <h5>Document Processing</h5>
                         <p class="text-muted">Upload PDF or DOCX files for automatic text extraction.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-primary">PDF</span>
+                            <span class="badge bg-primary">DOCX</span>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                    <div class="col-md-4 text-center mb-4 mb-md-0 stagger-item">
                         <div class="feature-icon mb-3">
-                            <i class="fas fa-brain fa-2x text-primary"></i>
+                            <i class="fas fa-brain fa-2x"></i>
                         </div>
                         <h5>AI Summarization</h5>
                         <p class="text-muted">Get concise, accurate summaries of complex contracts.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-info">GPT-4o</span>
+                            <span class="badge bg-info">OpenAI</span>
+                        </div>
                     </div>
-                    <div class="col-md-4 text-center">
+                    <div class="col-md-4 text-center stagger-item">
                         <div class="feature-icon mb-3">
-                            <i class="fas fa-search fa-2x text-primary"></i>
+                            <i class="fas fa-search fa-2x"></i>
                         </div>
                         <h5>Clause Extraction</h5>
                         <p class="text-muted">Identify and extract key clauses and important terms.</p>
+                        <div class="mt-3">
+                            <span class="badge bg-secondary">AI</span>
+                            <span class="badge bg-secondary">Pattern-based</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- How It Works Section -->
+        <div class="card shadow mt-4 fade-in-up">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-question-circle me-2"></i>How It Works</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="steps">
+                            <div class="step d-flex align-items-center mb-4 stagger-item">
+                                <div class="step-number me-3">
+                                    <span class="badge bg-primary rounded-circle p-3">1</span>
+                                </div>
+                                <div class="step-content">
+                                    <h5>Upload Your Contract</h5>
+                                    <p class="text-muted mb-0">Upload your PDF or DOCX contract document using the form above.</p>
+                                </div>
+                            </div>
+                            <div class="step d-flex align-items-center mb-4 stagger-item">
+                                <div class="step-number me-3">
+                                    <span class="badge bg-primary rounded-circle p-3">2</span>
+                                </div>
+                                <div class="step-content">
+                                    <h5>AI Analysis</h5>
+                                    <p class="text-muted mb-0">Our system extracts text and uses advanced AI to analyze the content.</p>
+                                </div>
+                            </div>
+                            <div class="step d-flex align-items-center stagger-item">
+                                <div class="step-number me-3">
+                                    <span class="badge bg-primary rounded-circle p-3">3</span>
+                                </div>
+                                <div class="step-content">
+                                    <h5>View Results</h5>
+                                    <p class="text-muted mb-0">Get a comprehensive breakdown of your contract with key information highlighted.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
