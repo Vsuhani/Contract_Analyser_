@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from werkzeug.utils import secure_filename
 import tempfile
 
@@ -103,6 +103,69 @@ def results():
 def request_entity_too_large(error):
     flash('File too large to upload. Please try a smaller file.', 'error')
     return redirect(url_for('index'))
+
+@app.route('/training')
+def training():
+    """Route for model training page"""
+    return render_template('training.html')
+
+@app.route('/api/openai-proxy', methods=['POST'])
+def openai_proxy():
+    """Proxy route for OpenAI API calls from frontend"""
+    try:
+        # Get request data
+        data = request.json
+        
+        # Validate request
+        if not data:
+            return jsonify({"error": "No data provided"}), 400
+        
+        # Process the call based on the requested operation
+        # This is a stub - in a real implementation you would call OpenAI's API here
+        response = {
+            "success": True,
+            "message": "API call simulated",
+            "data": {
+                "received": data
+            }
+        }
+        
+        return jsonify(response)
+    except Exception as e:
+        logger.error(f"OpenAI API proxy error: {str(e)}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
+
+@app.route('/api/sample-contracts/<contract_type>', methods=['GET'])
+def get_sample_contract(contract_type):
+    """Route to get sample contract text"""
+    try:
+        # Map contract type to file path
+        contract_files = {
+            'employment': 'static/sample_contracts/sample_employment_agreement.pdf.txt',
+            'lease': 'static/sample_contracts/sample_lease_agreement.pdf.txt',
+            'nda': 'static/sample_contracts/sample_nda.pdf.txt'
+        }
+        
+        if contract_type not in contract_files:
+            return jsonify({"error": "Invalid contract type"}), 400
+        
+        # Read the contract file
+        file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), contract_files[contract_type])
+        
+        if not os.path.exists(file_path):
+            return jsonify({"error": "Sample contract file not found"}), 404
+        
+        with open(file_path, 'r') as f:
+            contract_text = f.read()
+        
+        return jsonify({
+            "success": True,
+            "text": contract_text,
+            "type": contract_type
+        })
+    except Exception as e:
+        logger.error(f"Sample contract error: {str(e)}", exc_info=True)
+        return jsonify({"error": str(e)}), 500
 
 @app.errorhandler(500)
 def internal_server_error(error):
