@@ -4,8 +4,8 @@
  */
 
 // Constants for OpenAI API
-const OPENAI_API_ENDPOINT = '/api/openai-proxy';
-const DEFAULT_MODEL = 'gpt-4o'; // The newest OpenAI model is "gpt-4o" which was released May 13, 2024. Do not change this unless explicitly requested by the user
+const CONTRACT_ANALYZER_API_ENDPOINT = '/api/openai-proxy';
+const CONTRACT_ANALYZER_MODEL = 'gpt-4o'; // The newest OpenAI model is "gpt-4o" which was released May 13, 2024. Do not change this unless explicitly requested by the user
 
 class ContractAnalyzer {
   constructor() {
