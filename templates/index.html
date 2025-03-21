@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+        <div class="card mb-4 shadow">
+            <div class="card-body text-center p-5">
+                <h1 class="mb-4">Contract Analysis System</h1>
+                <p class="lead mb-4">Upload your contract documents for AI-powered analysis, summarization, and key clause extraction.</p>
+                
+                <div class="text-center my-4">
+                    <i class="fas fa-file-alt fa-4x text-primary mb-3"></i>
+                </div>
+                
+                <form action="{{ url_for('upload_file') }}" method="POST" enctype="multipart/form-data" class="mb-3">
+                    <div class="mb-4">
+                        <div class="input-group">
+                            <input type="file" class="form-control" name="file" id="file-upload" accept=".pdf,.docx" required>
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-upload me-2"></i>Analyze
+                            </button>
+                        </div>
+                        <div class="form-text">Supported formats: PDF, DOCX</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow">
+            <div class="card-header">
+                <h5 class="mb-0">Features</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-file-alt fa-2x text-primary"></i>
+                        </div>
+                        <h5>Document Processing</h5>
+                        <p class="text-muted">Upload PDF or DOCX files for automatic text extraction.</p>
+                    </div>
+                    <div class="col-md-4 text-center mb-3 mb-md-0">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-brain fa-2x text-primary"></i>
+                        </div>
+                        <h5>AI Summarization</h5>
+                        <p class="text-muted">Get concise, accurate summaries of complex contracts.</p>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="fas fa-search fa-2x text-primary"></i>
+                        </div>
+                        <h5>Clause Extraction</h5>
+                        <p class="text-muted">Identify and extract key clauses and important terms.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

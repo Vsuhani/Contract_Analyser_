@@ -1,0 +1,42 @@
+/* Custom styles for Contract Analysis System */
+
+.feature-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--bs-primary-bg-subtle);
+}
+
+.document-preview {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    background-color: var(--bs-dark-bg-subtle) !important;
+    color: var(--bs-body-color) !important;
+    border: 1px solid var(--bs-border-color);
+}
+
+/* Custom accordion styling */
+.accordion-button:not(.collapsed) {
+    background-color: var(--bs-primary-bg-subtle);
+    color: var(--bs-primary);
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+    border-color: var(--bs-border-color);
+}
+
+/* Custom card styling */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.card-header {
+    background-color: var(--bs-dark-bg-subtle);
+    border-bottom: 1px solid var(--bs-border-color);
+}

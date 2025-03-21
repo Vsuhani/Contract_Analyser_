@@ -1,0 +1,238 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1>Analysis Results</h1>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary">
+                <i class="fas fa-upload me-2"></i>Analyze Another Document
+            </a>
+        </div>
+        <p class="text-muted">File: {{ filename }}</p>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Summary Section -->
+    <div class="col-12 mb-4">
+        <div class="card shadow">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Executive Summary</h3>
+                <span class="badge bg-primary">Summary</span>
+            </div>
+            <div class="card-body">
+                {% if results.summary and results.summary.executive_summary %}
+                    <p class="lead">{{ results.summary.executive_summary }}</p>
+                    
+                    {% if results.summary.contract_type %}
+                        <p><strong>Contract Type:</strong> {{ results.summary.contract_type }}</p>
+                    {% endif %}
+                    
+                    {% if results.summary.effective_date %}
+                        <p><strong>Effective Date:</strong> {{ results.summary.effective_date }}</p>
+                    {% endif %}
+                    
+                    {% if results.summary.duration %}
+                        <p><strong>Duration:</strong> {{ results.summary.duration }}</p>
+                    {% endif %}
+                    
+                    {% if results.summary.key_points %}
+                        <h5 class="mt-4">Key Points</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for point in results.summary.key_points %}
+                                <li class="list-group-item bg-transparent">{{ point }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    
+                    {% if results.summary.termination_conditions %}
+                        <h5 class="mt-4">Termination Conditions</h5>
+                        <p>{{ results.summary.termination_conditions }}</p>
+                    {% endif %}
+                {% else %}
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        No summary information available.
+                        {% if results.summary and results.summary.error %}
+                            <p>Error: {{ results.summary.error }}</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- AI-Extracted Clauses Section -->
+    <div class="col-md-7 mb-4">
+        <div class="card shadow h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Key Clauses</h3>
+                <span class="badge bg-info">AI-Extracted</span>
+            </div>
+            <div class="card-body">
+                {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.key_clauses %}
+                    <div class="accordion" id="clausesAccordion">
+                        {% for clause in results.clauses.ai_extracted.key_clauses %}
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                            data-bs-target="#clause{{ loop.index }}">
+                                        {{ clause.title }}
+                                        {% if clause.importance %}
+                                            <span class="ms-2 badge bg-{{ 'danger' if clause.importance == 'High' else 'warning' if clause.importance == 'Medium' else 'secondary' }}">
+                                                {{ clause.importance }}
+                                            </span>
+                                        {% endif %}
+                                    </button>
+                                </h2>
+                                <div id="clause{{ loop.index }}" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <p>{{ clause.summary }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        No key clauses extracted.
+                    </div>
+                {% endif %}
+                
+                <!-- Parties Section -->
+                {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.parties %}
+                    <div class="mt-4">
+                        <h5>Parties Involved</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for party in results.clauses.ai_extracted.parties %}
+                                <li class="list-group-item bg-transparent">{{ party }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+                
+                <!-- Obligations Section -->
+                {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.obligations %}
+                    <div class="mt-4">
+                        <h5>Key Obligations</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for obligation in results.clauses.ai_extracted.obligations %}
+                                <li class="list-group-item bg-transparent">{{ obligation }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Side Information Panel -->
+    <div class="col-md-5 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">Key Dates</h4>
+            </div>
+            <div class="card-body">
+                {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.key_dates %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for date_item in results.clauses.ai_extracted.key_dates %}
+                                    <tr>
+                                        <td>{{ date_item.description }}</td>
+                                        <td>{{ date_item.date }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% elif results.clauses and results.clauses.pattern_based and results.clauses.pattern_based.dates %}
+                    <ul class="list-group list-group-flush">
+                        {% for date in results.clauses.pattern_based.dates %}
+                            <li class="list-group-item bg-transparent">{{ date }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No key dates identified.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h4 class="mb-0">Financial Terms</h4>
+            </div>
+            <div class="card-body">
+                {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.financial_terms %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Description</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for term in results.clauses.ai_extracted.financial_terms %}
+                                    <tr>
+                                        <td>{{ term.description }}</td>
+                                        <td>{{ term.value }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% elif results.clauses and results.clauses.pattern_based and results.clauses.pattern_based.monetary_values %}
+                    <ul class="list-group list-group-flush">
+                        {% for value in results.clauses.pattern_based.monetary_values %}
+                            <li class="list-group-item bg-transparent">{{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted">No financial terms identified.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        {% if results.clauses and results.clauses.ai_extracted and results.clauses.ai_extracted.restrictive_clauses %}
+            <div class="card shadow">
+                <div class="card-header">
+                    <h4 class="mb-0">Restrictive Clauses</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for clause in results.clauses.ai_extracted.restrictive_clauses %}
+                            <li class="list-group-item bg-transparent">{{ clause }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Document Preview Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Document Preview</h3>
+                <span class="badge bg-secondary">{{ results.document.word_count }} words</span>
+            </div>
+            <div class="card-body">
+                <div class="document-preview p-3 bg-light text-dark rounded" style="max-height: 300px; overflow-y: auto; font-family: monospace; white-space: pre-wrap;">
+                    {{ results.document.text_preview }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
